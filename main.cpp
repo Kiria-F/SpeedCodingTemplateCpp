@@ -1,5 +1,6 @@
 #include <utility>
 #include <algorithm>
+#include <array>
 #include <vector>
 #include <iostream>
 #include <queue>
@@ -11,10 +12,35 @@
 #include <set>
 #include <stack>
 #include <random>
+#include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
 namespace my {
+
+#define CIN_INIT(type, v) \
+    type v;               \
+    cin >> v;
+
+#define CIN_INIT_S2(type, v1, v2) \
+    type v1, v2;                  \
+    cin >> v1 >> v2;
+
+#define CIN_INIT_D2(type1, v1, type2, v2) \
+    type1 v1;                             \
+    type2 v2;                             \
+    cin >> v1 >> v2;
+
+#define CIN_INIT_S3(type, v1, v2, v3) \
+    type v1, v2, v3;                  \
+    cin >> v1 >> v2 >> v3;
+
+#define CIN_INIT_D3(type1, v1, type2, v2, type3, v3) \
+    type1 v1;                                        \
+    type2 v2;                                        \
+    type3 v3;                                        \
+    cin >> v1 >> v2 >> v3;
 
     typedef unsigned int uint;
     typedef long long ll;
