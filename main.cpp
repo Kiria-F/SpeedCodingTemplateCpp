@@ -19,6 +19,12 @@ using namespace std;
 
 namespace my {
 
+#define named(block_name) goto block_name; \
+                         block_name##_skip: if (false) \
+                         block_name:
+
+#define break(block_name) goto block_name##_skip
+
 #define CIN_INIT(type, v) \
     type v;               \
     cin >> v;
