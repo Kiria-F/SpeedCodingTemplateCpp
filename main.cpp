@@ -36,35 +36,63 @@ namespace my {
 
 #define break(block_name) goto block_name##_skip
 
-#define CIN_INIT(type, v) \
-    type v;               \
+#define CIN_INIT(t, v) \
+    t v;               \
     cin >> v
 
-#define CIN_INIT_S2(type, v1, v2) \
-    type v1, v2;                  \
+#define CIN_INIT_S2(t, v1, v2) \
+    t v1, v2;                  \
     cin >> v1 >> v2
 
-#define CIN_INIT_D2(type1, v1, type2, v2) \
-    type1 v1;                             \
-    type2 v2;                             \
+#define CIN_INIT_D2(t1, v1, t2, v2) \
+    t1 v1;                             \
+    t2 v2;                             \
     cin >> v1 >> v2
 
-#define CIN_INIT_S3(type, v1, v2, v3) \
-    type v1, v2, v3;                  \
+#define CIN_INIT_S3(t, v1, v2, v3) \
+    t v1, v2, v3;                  \
     cin >> v1 >> v2 >> v3
 
-#define CIN_INIT_S4(type, v1, v2, v3, v4) \
-    type v1, v2, v3, v4;                  \
+#define CIN_INIT_D3(t1, v1, t2, v2, t3, v3) \
+    t1 v1;                                  \
+    t2 v2;                                  \
+    t3 v3;                                  \
+    cin >> v1 >> v2 >> v3
+
+#define CIN_INIT_S4(t, v1, v2, v3, v4) \
+    t v1, v2, v3, v4;                  \
     cin >> v1 >> v2 >> v3 >> v4
 
-#define CIN_INIT_D3(type1, v1, type2, v2, type3, v3) \
-    type1 v1;                                        \
-    type2 v2;                                        \
-    type3 v3;                                        \
-    cin >> v1 >> v2 >> v3
+#define CIN_INIT_D4(t1, v1, t2, v2, t3, v3, t4, v4) \
+    t1 v1;                                          \
+    t2 v2;                                          \
+    t3 v3;                                          \
+    t4 v4;                                          \
+    cin >> v1 >> v2 >> v3 >> v4
 
-#define CIN_INIT_S6(type, v1, v2, v3, v4, v5, v6) \
-    type v1, v2, v3, v4, v5, v6;                  \
+#define CIN_INIT_S5(t, v1, v2, v3, v4, v5) \
+    t v1, v2, v3, v4, v5;                  \
+    cin >> v1 >> v2 >> v3 >> v4 >> v5
+
+#define CIN_INIT_D5(t1, v1, t2, v2, t3, v3, t4, v4, t5, v5) \
+    t1 v1;                                                  \
+    t2 v2;                                                  \
+    t3 v3;                                                  \
+    t4 v4;                                                  \
+    t5 v5;                                                  \
+    cin >> v1 >> v2 >> v3 >> v4 >> v5
+
+#define CIN_INIT_S6(t, v1, v2, v3, v4, v5, v6) \
+    t v1, v2, v3, v4, v5, v6;                  \
+    cin >> v1 >> v2 >> v3 >> v4 >> v5 >> v6
+
+#define CIN_INIT_D6(t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6) \
+    t1 v1;                                                          \
+    t2 v2;                                                          \
+    t3 v3;                                                          \
+    t4 v4;                                                          \
+    t5 v5;                                                          \
+    t6 v6;                                                          \
     cin >> v1 >> v2 >> v3 >> v4 >> v5 >> v6
 
     typedef unsigned int uint;
