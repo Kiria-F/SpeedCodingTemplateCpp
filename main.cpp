@@ -104,7 +104,7 @@ namespace my {
         { t.cbegin() } -> std::same_as<typename T::const_iterator>;
         { t.cend() } -> std::same_as<typename T::const_iterator>;
         { t.size() } -> std::convertible_to<size_t>;
-    };
+    } && !std::is_same_v<T, std::string>;
 
     template<ReadableCollection T>
     ostream& operator<<(ostream& os, const T& input) {
