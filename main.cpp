@@ -71,54 +71,30 @@ namespace my {
     typedef long long ll;
     typedef unsigned long long ull;
 
-    template<typename T>
-    string to_string(const vector<T>& input) {
-        std::stringstream ss;
-        ss << CONTAINER_LEFT_BORDER;
+    template<class T>
+    concept ReadableCollection = requires(T t) {
+        { t.cbegin() } -> std::same_as<typename T::const_iterator>;
+        { t.cend() } -> std::same_as<typename T::const_iterator>;
+        { t.size() } -> std::convertible_to<size_t>;
+    };
+
+    template<ReadableCollection T>
+    ostream& operator<<(ostream& os, const T& input) {
+        os << CONTAINER_LEFT_BORDER;
         if (input.size() > 0) {
-            for (auto it = input.cbegin(); it != --input.cend(); ++it)
-                ss << *it << CONTAINER_DELIMITER;
-            ss << *--input.end();
+            auto it_last = --input.cend();
+            auto it = input.cbegin();
+            for (; it != it_last; ++it)
+                os << *it << CONTAINER_DELIMITER;
+            os << *it;
         }
-        ss << CONTAINER_RIGHT_BORDER;
-        return ss.str();
-    }
-
-    template<typename T>
-    string to_string(const list<T>& input) {
-        std::stringstream ss;
-        ss << CONTAINER_LEFT_BORDER;
-        if (input.size() > 0) {
-            for (auto it = input.cbegin(); it != --input.cend(); ++it)
-                ss << *it << CONTAINER_DELIMITER;
-            ss << *--input.end();
-        }
-        ss << CONTAINER_RIGHT_BORDER;
-        return ss.str();
-    }
-
-    template<typename T1, typename T2>
-    string to_string(const pair<T1, T2>& input) {
-        std::stringstream ss;
-        ss << input.first << CONTAINER_DELIMITER << input.second;
-        return ss.str();
-    }
-
-    template<typename T>
-    ostream& operator<<(ostream& os, const vector<T>& input) {
-        os << to_string<T>(input);
-        return os;
-    }
-
-    template<typename T>
-    ostream& operator<<(ostream& os, const list<T>& input) {
-        os << to_string<T>(input);
+        os << CONTAINER_RIGHT_BORDER;
         return os;
     }
 
     template<typename T1, typename T2>
     ostream& operator<<(ostream& os, const pair<T1, T2>& input) {
-        os << to_string<T1, T2>(input);
+        os << input.first << CONTAINER_DELIMITER << input.second;
         return os;
     }
 
