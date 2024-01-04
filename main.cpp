@@ -150,9 +150,7 @@ namespace my {
         return res;
     }
 
-// #define Z_LEADING_VALUE
-
-    vector<int> straight_z_function(string s) {
+    vector<int> straight_z_function(string s, bool leading_value = true) {
         int n = (int) s.length();
         vector<int> z(n);
         for (int i = 1, l = 0, r = 0; i < n; ++i) {
@@ -163,13 +161,13 @@ namespace my {
             if (i + z[i] - 1 > r)
                 l = i, r = i + z[i] - 1;
         }
-#ifdef Z_LEADING_VALUE
-        z[0] = n;
-#endif
+        if (leading_value) {
+            z[0] = n;
+        }
         return z;
     }
 
-    vector<int> reversed_z_function(string s) {
+    vector<int> reversed_z_function(string s, bool leading_value = true) {
         int n = (int) s.length();
         vector<int> z(n);
         for (int i = n - 2, l = n - 1, r = n - 1; i >= 0; --i) {
@@ -180,9 +178,9 @@ namespace my {
             if (i - z[i] + 1 < l)
                 r = i, l = i - z[i] + 1;
         }
-#ifdef Z_LEADING_VALUE
-        z[n - 1] = n;
-#endif
+        if (leading_value) {
+            z[n - 1] = n;
+        }
         return z;
     }
 }
