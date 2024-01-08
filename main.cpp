@@ -150,7 +150,7 @@ namespace my {
         return res;
     }
 
-    vector<int> straight_z_function(string s, bool leading_value = true) {
+    vector<int> z_function(string s, bool leading_value = true) {
         int n = (int) s.length();
         vector<int> z(n);
         for (int i = 1, l = 0, r = 0; i < n; ++i) {
@@ -163,6 +163,21 @@ namespace my {
         }
         if (leading_value) {
             z[0] = n;
+        }
+        return z;
+    }
+
+    vector<int> z_function(string p, string s) {
+        int sn = (int) s.length();
+        vector<int> pz = z_function(p, false);
+        vector<int> z(sn);
+        for (int i = 0, l = 0, r = 0; i < sn; ++i) {
+            if (i <= r)
+                z[i] = min(r - i + 1, pz[i - l]);
+            while (i + z[i] < sn && p[z[i]] == s[i + z[i]])
+                ++z[i];
+            if (i + z[i] - 1 > r)
+                l = i, r = i + z[i] - 1;
         }
         return z;
     }
