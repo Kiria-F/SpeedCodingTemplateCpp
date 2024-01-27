@@ -15,6 +15,8 @@
 #include <unordered_set>
 #include <unordered_map>
 
+#define C20
+
 // #define DEBUG
 #ifdef DEBUG
 #define CONTAINER_DELIMITER ", "
@@ -26,7 +28,19 @@
 #define CONTAINER_RIGHT_BORDER ""
 #endif
 
-#define C20
+#define CIN_DELIMITER ','
+#ifdef CIN_DELIMITER
+struct cin_delimiters : std::ctype<char> {
+    cin_delimiters() : std::ctype<char>(get_table()) {}
+    static mask const* get_table()
+    {
+        static mask rc[table_size];
+        rc[CIN_DELIMITER] = std::ctype_base::space;
+        rc['\n'] = std::ctype_base::space;
+        return &rc[0];
+    }
+};
+#endif
 
 using namespace std;
 
@@ -215,6 +229,9 @@ void solution_X() {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+#ifdef CIN_DELIMITER
+    cin.imbue(locale(cin.getloc(), new cin_delimiters));
+#endif
 
     solution_X();
 
