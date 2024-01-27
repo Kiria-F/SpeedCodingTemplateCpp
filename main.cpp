@@ -26,6 +26,8 @@
 #define CONTAINER_RIGHT_BORDER ""
 #endif
 
+#define C20
+
 using namespace std;
 
 namespace my {
@@ -99,6 +101,8 @@ namespace my {
     typedef long long ll;
     typedef unsigned long long ull;
 
+#ifdef C20
+
     template<class T>
     concept ReadableCollection = requires(T t) {
         { t.cbegin() } -> std::same_as<typename T::const_iterator>;
@@ -125,6 +129,8 @@ namespace my {
         os << input.first << CONTAINER_DELIMITER << input.second;
         return os;
     }
+
+#endif
 
     ll bin_power(ll a, ll b, ll mod) {
         ll res = 1;
